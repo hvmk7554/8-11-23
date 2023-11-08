@@ -17,10 +17,10 @@ class UserController extends Controller
     public function index()
     {
         $roles= UserRoleM::where('status',1)->select('id','name')->get();
-        // $users = DB::table('users')
-        //    ->join('role_tbl','users.idRole','=','role_tbl.id')
-        //    ->select('users.*','role_tbl.name-as-rolename')
-        //    ->get();
+         $users = DB::table('users')
+           ->join('role_tbl','users.idRole','=','role_tbl.id')
+           ->select('users.*','role_tbl.name as rolename')
+           ->get();
   //   dd($users);
 return view('users.users',compact('roles'));
         

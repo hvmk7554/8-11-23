@@ -41,7 +41,7 @@
             </tr>
         </thead>
         <tbody>
-            @foreach ($roles as $key => $item)
+            @foreach ($users as $key => $item)
                 <tr> 
                     <td> {{ ++$key }}</td>
                     <td><span class="pointer editUserName" 
