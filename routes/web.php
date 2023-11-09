@@ -25,4 +25,9 @@ Route::controller(UserRoleController ::class)->group(function(){
 Route::controller(UserController ::class)->group(function(){
     Route::get('/users','index');
     Route::post('/users','create');
+    Route::post('/updateUSRole','updateUSRole');
+    Route::post('/updateUSstatus','updateUSstatus');
+    Route::post('/updateUSname','updateUSname');
+    Route::post('/updateUSmail','updateUSmail');
+    Route::post('/deleteUser','destroy');
 });

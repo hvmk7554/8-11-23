@@ -37,7 +37,8 @@
         @foreach ($roles as $key => $item)
             <tr class="">
                 <td scope="row">{{ ++$key }}</td>
-                <td><span class="editRoleName" data-id="{{ $item->id }}">{{ $item->name }}</span></td>
+                <td><span class="editRoleName"
+                     data-id="{{ $item->id }}">{{ $item->name }}</span></td>
 
                 <td>
                     <select name="" id="" class="form-control editRoleStatus" data-id="{{ $item->id }}">
