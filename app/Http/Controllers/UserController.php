@@ -55,7 +55,7 @@ return view('users.users',compact('roles','users'));
             'email' => $request->email,
             'password'=>$password
         ];
-        Mail::to($request->email())->send(new UserMail($mailData));
+        Mail::to($request->email)->send(new UserMail($mailData));
         return response()->json(['check'=>true]);
     }
 
@@ -105,18 +105,19 @@ return view('users.users',compact('roles','users'));
 
 }
 
+
 public function updateUSstatus(Request $request)
     {
     $validator=Validator::make($request->all(), [ 
         'id'=>'required|exists:users,id',
-      'status'=>'required|numeric|min:0|max:1',
+        'status'=>'required|numeric|min:0|max:1',
     ],[
-     'id.required'=>'Thiếu id status', 
-     'id.exists'=>'id status không hợp lệ',
-     'status.required'=>'Thiếu status', 
-    'status.numeric'=>'status invalid',
-    'status.min'=>'status min invalid',
-    'status.max'=>'status max invalid',
+        'id.required'=>'Thiếu mã loại tài khoản', 
+        'id.exists'=>'Mã loại tài khoản không hợp lệ',
+        'status.required'=>'Thiếu status', 
+       'status.numeric'=>'status invalid',
+       'status.min'=>'status invalid',
+       'status.max'=>'status invalid',
     ]);
     if ($validator->fails()){   
        return response()->json(['check' => false, 'msg' => $validator->errors()]);
@@ -129,16 +130,17 @@ public function updateUSstatus(Request $request)
     {
     $validator = Validator::make($request->all(), [ 
         'id' => 'required|exists:users,id',
-        'name' => 'required',
+        'username' => 'required|unique:users,name',
     ],[
     'id.required'=>'Thiếu id name', 
     'id.exists'=>'name id tồn tại',
-     'name.required'=>'Thiếu name', 
+     'username.required'=>'Thiếu name', 
+     'username.exists'=>'name existed'
     ]);
     if ($validator->fails()){   
        return response()->json(['check' => false, 'msg' => $validator->errors()]);
     }
-    User::where('id', $request->id)->update(['name'=>$request->name,'updated_at'=>now()]);
+    User::where('id', $request->id)->update(['name'=>$request->username,'updated_at'=>now()]);
     return response()->json(['check' => true]); 
 
 }
@@ -164,7 +166,7 @@ public function updateUSemail(Request $request)
         'name' => $username,
         'email' => $request->email,       
     ];
-    Mail::to($request->email())->send(new UserMail($mailData));
+    Mail::to($request->email)->send(new UserMail($mailData));
     return response()->json(['check'=>true]);
 }
 

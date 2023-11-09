@@ -79,7 +79,7 @@
                         data-id="{{ $item->id }}">{{ $item->name }}</span></td>
     
                      <td><span class="editUserEmail" 
-                            data-id="{{ $item->id }}">{{ $item->name }}</span></td>
+                            data-id="{{ $item->id }}">{{ $item->email }}</span></td>
 
                     <td>
                          <select name="" id="" class="form-control editUserRole" 
@@ -343,7 +343,7 @@ const Toast = Swal.mixin({
                             url: "/updateUSname",
                             data: {
                                 id:id,
-                                name:name,
+                                username:username,
                             },
                             dataType: "JSON",
                             success: function(res) {
@@ -361,10 +361,10 @@ const Toast = Swal.mixin({
                                         icon: "error",
                                         title: res.msg.id
                                     });
-                                } else if (res.msg.name) {
+                                } else if (res.msg.username) {
                                     Toast.fire({
                                         icon: "error",
-                                        title: res.msg.name
+                                        title: res.msg.username
                                     });
                                 }
                             }

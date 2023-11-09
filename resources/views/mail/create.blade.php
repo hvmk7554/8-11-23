@@ -17,7 +17,7 @@
          <h4  style="font-family: 'Times New Roman', Times, serif; font-size: 17px; text-align:center; color: black">Email : {{$mailData['email']}}</h4>
         @if (isset($mailData['password']))
          <h4 style="font-family: 'Times New Roman', Times, serif; font-size: 17px; text-align:center; color: black">Mật khẩu: {{$mailData['password']}} </h4>
-
+@endif
     </div>
 </body>
 </html>
